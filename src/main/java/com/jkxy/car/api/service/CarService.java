@@ -18,4 +18,8 @@ public interface CarService {
     void updateById(Car car);
 
     void insertCar(Car car);
+
+    Car findByCarNameAndCarType(String carName,String carType);
+
+    List<Car> fuzzyQueryPage(String carName,Integer fromItem,Integer size);
 }

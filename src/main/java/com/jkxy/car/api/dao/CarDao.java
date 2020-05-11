@@ -20,9 +20,14 @@ public interface CarDao {
     @Delete("delete from carMessage where id = #{id}")
     void deleteById(int id);
 
-    @Update("update carMessage set carName=#{carName},carType=#{carType},price=#{price},carSeries=#{carSeries} where id = #{id}")
+    @Update("update carMessage set carName=#{carName},carType=#{carType},price=#{price},carSeries=#{carSeries},num=#{num} where id = #{id}")
     void updateById(Car car);
 
-    @Insert("insert into carMessage(carName,carType,price,carSeries) values(#{carName},#{carType},#{price},#{carSeries})")
+    @Insert("insert into carMessage(carName,carType,price,carSeries,num) values(#{carName},#{carType},#{price},#{carSeries},num=#{num})")
     void insertCar(Car car);
+
+    @Select("select * from carMessage where carName=#{carName} and carType=#{carType}")
+    Car findByCarNameAndCarType(String carName,String carType);
+
+    List<Car> fuzzyQueryPage(String carName, Integer fromItem, Integer size);
 }

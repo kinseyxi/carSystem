@@ -43,4 +43,15 @@ public class CarServiceImpl implements CarService {
     public void insertCar(Car car) {
         carDao.insertCar(car);
     }
+
+    @Override
+    public Car findByCarNameAndCarType(String carName,String carType) {
+        return carDao.findByCarNameAndCarType(carName,carType);
+    }
+
+    @Override
+    public List<Car> fuzzyQueryPage(String carName, Integer fromItem, Integer size) {
+        return carDao.fuzzyQueryPage(carName,fromItem,size);
+    }
+
 }
